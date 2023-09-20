@@ -13,15 +13,6 @@ if (question == true) {
 }
 
 // object task
-let obj = {
-  firstName: "Jane",
-  surname: "Jack",
-  password: 12345,
-  fullName: function () {
-    return this.firstName + " " + this.surname;
-  },
-};
-
 class Human {
   constructor(firstName, surname, password) {
     this.firstName = firstName;
@@ -30,8 +21,18 @@ class Human {
   }
 }
 
-function UpperCase() {
-  return obj.fullName().toUpperCase();
-}
+let person = new Human("Jane", "Jhonson", 12345);
 
-console.log(UpperCase());
+let person2 = {
+  firstName: "Jane",
+  surname: "Jhonson",
+  fullName: function () {
+    return this.firstName + " " + this.surname;
+  },
+  get upperCase() {
+    return this.fullName().toUpperCase();
+  },
+};
+
+let heading = document.getElementById("full-name");
+heading.innerHTML = person2.upperCase;
